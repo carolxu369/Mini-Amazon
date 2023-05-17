@@ -1,5 +1,4 @@
-# erss-project-yz674-jx139
-## Usage
+# Usage
 This project has been deployed with Docker. To launch the project, after launching the world simulator, run
 ```bash
 sudo docker-compose up
