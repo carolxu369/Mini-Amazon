@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <title>Checkout</title>
+</head>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<body>
+    <header>
+        <div class="left">
+            <h1>Mini Amazon</h1>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="/homepage">Home Page</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Ready For Checkout</h1>
+        <form action="/checkout" method="post">
+            {% csrf_token %}
+            <div class="input">
+                <label for="dest_x">Destination Address x</label>
+                <input type="text" id="dest_x" name="dest_x">
+            </div>
+            <div class="input">
+                <label for="dest_y">Destination Address y</label>
+                <input type="text" id="dest_y" name="dest_y">
+            </div>
+            <div class="input">
+                <label for="order_ups">UPS Account</label>
+                <input type="text" id="order_ups" name="order_ups">
+            </div>
+            <div class="input">
+                <label for="card_num">Card Number</label>
+                <input type="text" id="card_num" name="card_num">
+            </div>
+            <div>
+                <input type="submit" value="Checkout">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

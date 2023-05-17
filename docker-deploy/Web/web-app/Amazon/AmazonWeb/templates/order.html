@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <title>View Order</title>
+
+	<style>
+        td ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        td ul li {
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <h1>Mini Amazon</h1>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="/homepage">Home Page</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="shopping">
+		<h2>All Orders</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Order Time</th>
+					<th>Products</th>
+					<th>Package Status</th>
+					<th>Tracking Number</th>
+					<th>Destination x</th>
+					<th>Destination y</th>
+					<th>Order Status</th>
+				</tr>
+			</thead>
+			{% if is_exist == 1 %}
+			<tbody>
+				{% for order in orders %}
+				<tr>
+					<td>{{ order.order_time }}</td>
+					<td>
+						<ul>
+							{% for product in order.products.all %}
+							<li>{{ product.description }}</li>
+							{% endfor %}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							{% for product in order.products.all %}
+							<li>{{ product.status }}</li>
+							{% endfor %}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							{% for product in order.products.all %}
+							<li>{{ product.tracking_number }}</li>
+							{% endfor %}
+						</ul>
+					</td>
+					<td>{{ order.dest_addr_x }}</td>
+					<td>{{ order.dest_addr_y }}</td>
+					<td>
+						{% if order.order_status == 'open' %}
+						Open
+						{% elif order.order_status == 'placed' %}
+						Placed
+						{% elif order.order_status == 'processing' %}
+						Processing
+						{% elif order.order_status == 'complete' %}
+						Complete
+						{% endif %}
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			{% endif %}
+		</table>
+        
+	</div>
+</body>
+</html>

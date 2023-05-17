@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/style_homepage.css">
+    <title>Buy Now: Sunglasses</title>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <h1>Mini Amazon</h1>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="/homepage">Home Page</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <form action="/buy_sunglasses" method="post">
+            {% csrf_token %}
+            <div class="purchase">
+              <img src="../static/pictures/sunglasses.jpeg" alt="Sunglasses">
+              <p>Sunglasses</p>
+              <p>$20.99</p>
+              <div class="quantity">
+                <label>Quantity: </label>
+                <input type="number" name="quantity" id="quantity" value="1" min="1">
+              </div>
+              <div>
+                <input type="submit" value="Add To Shopping Cart">
+              </div>
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>
