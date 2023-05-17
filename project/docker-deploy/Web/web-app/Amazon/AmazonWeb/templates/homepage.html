@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/style_homepage.css">
+    <title>Homepage</title>
+</head>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<body>
+    <header>
+        <div class="left">
+            <h1>Mini Amazon</h1>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="/profile">View/Edit Profile</a></li>
+                <li><a href="/order">View Orders</a></li>
+                <li><a href="/shopping_cart">Shopping Cart</a></li>
+                <li><a href="/welcome">Log Out</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="center">
+        <h2>Best Sellers!</h2>
+        <form action="/homepage" method="post">
+            <input type="text" id="search" name="search">
+            <button type="submit">Search Product</button>
+         </form>
+    </div>
+
+    <main>
+        <div class="product">
+            <img src="../static/pictures/tenders.jpeg" alt="Chicken Tenders">
+            <p>Chicken Tenders</p>
+            <p>$8.89</p>
+            <a href="/buy_tenders">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="../static/pictures/fries.webp" alt="Fries">
+            <p>Fries</p>
+            <p>$3.79</p>
+            <a href="/buy_fries">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="../static/pictures/coke.jpeg" alt="Coke">
+            <p>Coke</p>
+            <p>$2.95</p>
+            <a href="/buy_coke">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="../static/pictures/umbrella.jpeg" alt="Umbrella">
+            <p>Umbrella</p>
+            <p>$10.99</p>
+            <a href="/buy_umbrella">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="../static/pictures/sunglasses.jpeg" alt="Sunglasses">
+            <p>Sunglasses</p>
+            <p>$20.99</p>
+            <a href="/buy_sunglasses">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="../static/pictures/hat.jpeg" alt="Hat">
+            <p>Hat</p>
+            <p>$30.99</p>
+            <a href="/buy_hat">Buy Now</a>
+        </div>
+    </main>
+</body>
+</html>
+
